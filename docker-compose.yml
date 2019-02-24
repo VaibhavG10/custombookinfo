@@ -1,0 +1,36 @@
+version: '3'
+
+networks:
+  monitor-net:
+    driver: bridge
+
+services:
+    productpage:
+      image: istio/examples-bookinfo-productpage-v1:1.8.0
+      networks:
+        - monitor-net
+      expose:
+        - "9080"
+      ports:
+        - "9080:9080"
+
+    details:
+      image: istio/examples-bookinfo-details-v1:1.8.0
+      networks:
+        - monitor-net
+      expose:
+        - "9080"
+
+    ratings:
+      image: istio/examples-bookinfo-ratings-v1:1.8.0
+      networks:
+        - monitor-net
+      expose:
+        - "9080"
+
+    reviews:
+      image: istio/examples-bookinfo-reviews-v3:1.8.0
+      networks:
+        - monitor-net
+      expose:
+        - "9080"
