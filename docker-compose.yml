@@ -6,9 +6,11 @@ networks:
 
 services:
     productpage:
-      image: istio/examples-bookinfo-productpage-v1:1.8.0
+      image: vaibhav2016/pycustprodpage
       networks:
         - monitor-net
+      environment:
+        - PROTOCOL_TYPE=http
       expose:
         - "9080"
       ports:
